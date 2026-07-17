@@ -26,7 +26,7 @@ linguas = {
     "Turco": "tr"
 }
 
-print("Bem-vindo ao jogo de pronúncia!")
+print("🤩 Bem-vindo(a) ao jogo de pronúncia! 🤩")
 
 while True:
     time.sleep(1)
@@ -41,7 +41,7 @@ while True:
         if idioma in linguas:
             break
         else:
-            print("O Idioma selecionado não está disponível ou foi escrito incorretamente. Tente novamente.")
+            print("⚠️ O Idioma selecionado não está disponível ou foi escrito incorretamente. Tente novamente.⚠️")
     while True:
         time.sleep(1)
         print("Níveis de dificuldade disponíveis:")
@@ -53,10 +53,10 @@ while True:
         if nivel in words_by_level:
             break
         else:
-            print("O nível selecionado não está disponível ou foi escrito incorretamente. Tente novamente.")
+            print("⚠️ O nível selecionado não está disponível ou foi escrito incorretamente. Tente novamente.⚠️")
     for i in range(len(words_by_level[nivel])):
         time.sleep(1)
-        print("a palavra a ser pronunciada é:", words_by_level[nivel][i])
+        print("A palavra a ser pronunciada é:", words_by_level[nivel][i])
         time.sleep(1)
         print("Começando a gravação de áudio em 3 segundos...")
         time.sleep(1)
@@ -84,19 +84,19 @@ while True:
             translator = Translator()
             translated = translator.translate(text, dest="pt")  # O 'en' aqui é um código para inglês
             if translated.text == words_by_level[nivel][i]:
-                print("Parabéns! Você pronunciou a palavra corretamente.")
+                print("✅ Parabéns! Você pronunciou a palavra corretamente.✅")
                 pontos += 1
             else:
-                print("A palavra pronunciada não corresponde à palavra esperada.")
+                print("❌ A palavra pronunciada não corresponde à palavra esperada.❌")
                 time.sleep(1)
-                print("palavra reconhecida:", translated.text)
+                print("Palavra reconhecida:", translated.text)
                 erros += 1
         except sr.UnknownValueError:             # - se o Google não conseguiu entender a fala devido a ruídos ou silêncio
-            print("A fala não pôde ser reconhecida devido a ruídos ou silêncio. Verifique se o microfone está funcionando corretamente e tente novamente.")
+            print("⚠️ A fala não pôde ser reconhecida devido a ruídos ou silêncio. Verifique se o microfone está funcionando corretamente e tente novamente.⚠️")
             break
         except sr.RequestError as e:             # - se não houver conexão com a Internet ou a API estiver indisponível
             print(f"Service error: {e}")
-            print("ocorreu um erro ao tentar se conectar ao serviço de reconhecimento de fala. Verifique sua conexão com a Internet e tente novamente.")
+            print("⚠️ Ocorreu um erro ao tentar se conectar ao serviço de reconhecimento de fala. Verifique sua conexão com a Internet e tente novamente.⚠️")
             break
         if i == len(words_by_level[nivel]) - 1 or erros >= 3:
             print("Fim do jogo!")
@@ -109,5 +109,5 @@ while True:
                 pontos = 0
                 break
             else:
-                print("Obrigado por jogar!")
+                print("😁 Obrigado por jogar!😁")
                 exit()
